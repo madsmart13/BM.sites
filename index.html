@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>ورود به سرور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      direction: rtl;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #000000, #1a1a1a, #0f0f0f);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .message-box {
+      background: #111;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 20px cyan, 0 0 40px orange, 0 0 60px yellow;
+      animation: neon 2s infinite alternate;
+    }
+
+    @keyframes neon {
+      from {
+        box-shadow: 0 0 10px cyan, 0 0 20px orange;
+      }
+      to {
+        box-shadow: 0 0 20px yellow, 0 0 40px cyan;
+      }
+    }
+
+    .message-box h2 {
+      font-size: 2rem;
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+
+    .message-box p {
+      font-size: 1.2rem;
+      color: #ff0;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .connect-btn {
+      display: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: #00ff55;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .connect-btn:hover {
+      transform: scale(1.1);
+      background: #33ff77;
+    }
+
+    .copy-section {
+      margin-top: 20px;
+    }
+
+    .copy-input {
+      padding: 10px;
+      width: 250px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      text-align: center;
+    }
+
+    .copy-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ffaa00;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .copy-btn:hover {
+      background: #ffcc33;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="popup" id="popup">
+    <div class="message-box">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h2>ورود شما تایید شد</h2>
+      <p>اشتراک فعال</p>
+      <div class="copy-section">
+        <input type="text" value="wii1-rFFa.aternos.me:22481" id="serverIP" class="copy-input" readonly>
+        <br>
+        <button class="copy-btn" onclick="copyIP()">کپی آدرس سرور</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="connect-btn" id="connectBtn" onclick="connectToMinecraft()">اتصال</button>
+
+  <script>
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("connectBtn").style.display = "inline-block";
+    }
+
+    function connectToMinecraft() {
+      const serverIP = "wii1-rFFa.aternos.me:22481";
+      alert("برای اتصال به سرور، آدرس زیر را در Minecraft → Multiplayer وارد کنید:\n\n" + serverIP);
+      // در صورت پشتیبانی از minecraft:// (معمولاً نه در TLauncher)
+      // window.location.href = `minecraft://${serverIP}`;
+    }
+
+    function copyIP() {
+      const ipField = document.getElementById("serverIP");
+      ipField.select();
+      ipField.setSelectionRange(0, 99999); // موبایل ساپورت
+      document.execCommand("copy");
+      alert("آدرس سرور کپی شد!");
+    }
+  </script>
+
+</body>
+</html>
