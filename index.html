@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BM-hub</title>
+  <title>BM-Sites</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
@@ -107,6 +107,156 @@
     <a class="btn" href="https://madsmart13.github.io/BM1-ir/" target="_blank">BM1</a>
     <a class="btn" href="https://madsmart13.github.io/BM_pro/" target="_blank">BM PRO</a>
     <a class="btn" href="https://madsmart13.github.io/BM1-op12/" target="_blank">Dashboard</a>
+  </div> 
+
+
+
+
+
+  
+
+
+
+
+<!-- 🎮 Gaming Selection Section -->
+<div class="game-section">
+  <h2>Select Your Game</h2>
+  <div class="game-list">
+    <button class="game-btn">Counter-Strike 2</button>
+    <button class="game-btn">Tom Clancy's Rainbow Six® Siege X</button>
+    <button class="game-btn">Rust</button>
+    <button class="game-btn">Battlefield™ V</button>
+    <button class="game-btn">fivem</button>
+    <button class="game-btn">Arena Breakout Infinite</button>
+    <button class="game-btn">Warzone</button>
+    <button class="game-btn">THE FINALS</button>
+    <button class="game-btn">Delta Force</button>
+    <button class="game-btn">Sea of Thieves</button>
+    <button class="game-btn">Dota2</button>
+    <button class="game-btn">Other Game</button>
   </div>
+  <button class="ok-btn">OK</button>
+  <div class="selected-output"></div>
+</div>
+
+<style>
+  .game-section {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #0f0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #0f0;
+    font-family: 'Share Tech Mono', monospace;
+    color: #0f0;
+    text-align: center;
+  }
+
+  .game-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    text-shadow: 0 0 10px #0f0;
+  }
+
+  .game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
+
+  .game-btn {
+    padding: 10px;
+    border: 2px solid #0f0;
+    border-radius: 6px;
+    background: transparent;
+    color: #0f0;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.9rem;
+    position: relative;
+  }
+
+  .game-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 10px #0f0;
+  }
+
+  .game-btn.selected {
+    border-color: #39ff14;
+    background: rgba(0, 255, 0, 0.25);
+    box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
+  }
+
+  .ok-btn {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    background: #0f0;
+    border: none;
+    border-radius: 6px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .ok-btn:hover {
+    background: #39ff14;
+    box-shadow: 0 0 15px #39ff14, 0 0 40px #39ff14;
+    transform: scale(1.05);
+  }
+
+  .selected-output {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #0f0;
+    text-align: left;
+    white-space: pre-line;
+  }
+</style>
+
+<script>
+  const gameButtons = document.querySelectorAll('.game-btn');
+  const okButton = document.querySelector('.ok-btn');
+  const output = document.querySelector('.selected-output');
+
+  let selectedGames = [];
+
+  gameButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('selected');
+      const game = btn.textContent;
+      if (selectedGames.includes(game)) {
+        selectedGames = selectedGames.filter(g => g !== game);
+      } else {
+        selectedGames.push(game);
+      }
+    });
+  });
+
+  okButton.addEventListener('click', () => {
+    if (selectedGames.length > 0) {
+      output.innerHTML = "<strong>🎮 Selected Games:</strong><br>" + selectedGames.join("<br>");
+    } else {
+      output.innerHTML = "<strong>No games selected.</strong>";
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+  
 </body>
 </html>
