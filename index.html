@@ -118,28 +118,36 @@
 
 
 
+
+
 <!-- 🎮 Gaming Selection Section -->
 <div class="game-section">
   <h2>Select Your Game</h2>
   <div class="game-list">
-    <button class="game-btn">Counter-Strike 2</button>
-    <button class="game-btn">Tom Clancy's Rainbow Six® Siege X</button>
-    <button class="game-btn">Rust</button>
-    <button class="game-btn">Battlefield™ V</button>
-    <button class="game-btn">fivem</button>
-    <button class="game-btn">Arena Breakout Infinite</button>
-    <button class="game-btn">Warzone</button>
-    <button class="game-btn">THE FINALS</button>
-    <button class="game-btn">Delta Force</button>
-    <button class="game-btn">Sea of Thieves</button>
-    <button class="game-btn">Dota2</button>
-    <button class="game-btn">Other Game</button>
+    <button class="game-btn cs2">Counter-Strike 2</button>
+    <button class="game-btn r6">Tom Clancy's Rainbow Six® Siege X</button>
+    <button class="game-btn rust">Rust</button>
+    <button class="game-btn bf5">Battlefield™ V</button>
+    <button class="game-btn fivem">fivem</button>
+    <button class="game-btn arena">Arena Breakout Infinite</button>
+    <button class="game-btn wz">Warzone</button>
+    <button class="game-btn finals">THE FINALS</button>
+    <button class="game-btn delta">Delta Force</button>
+    <button class="game-btn sots">Sea of Thieves</button>
+    <button class="game-btn dota">Dota2</button>
+    <button class="game-btn other">Other Game</button>
   </div>
   <button class="ok-btn">OK</button>
   <div class="selected-output"></div>
 </div>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
   .game-section {
     position: fixed;
     right: 20px;
@@ -171,26 +179,74 @@
     padding-right: 5px;
   }
 
+  /* 🎨 Scrollbar Custom */
+  .game-list::-webkit-scrollbar {
+    width: 10px;
+  }
+  .game-list::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 10px;
+  }
+  .game-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #0f0, #39ff14);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0f0;
+  }
+  .game-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #39ff14, #0f0);
+  }
+
   .game-btn {
     padding: 10px;
     border: 2px solid #0f0;
     border-radius: 6px;
-    background: transparent;
+    background: black;
     color: #0f0;
     cursor: pointer;
-    transition: 0.3s;
     font-size: 0.9rem;
+    transition: 0.3s;
     position: relative;
+    overflow: hidden;
   }
 
   .game-btn:hover {
-    background: rgba(0, 255, 0, 0.2);
-    box-shadow: 0 0 10px #0f0;
+    transform: scale(1.05);
   }
 
+  /* ✨ Animated gradient borders */
+  .game-btn::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #0f0, #00f);
+    z-index: -1;
+    background-size: 200% 200%;
+    animation: borderAnim 3s linear infinite;
+  }
+
+  @keyframes borderAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* 🎮 Different color combos */
+  .sots::before { background: linear-gradient(90deg, #003300, #001a33); } /* Sea of Thieves */
+  .cs2::before { background: linear-gradient(90deg, #39ff14, #111); }
+  .r6::before { background: linear-gradient(90deg, #ffcc00, #333); }
+  .rust::before { background: linear-gradient(90deg, #ff3300, #660000); }
+  .bf5::before { background: linear-gradient(90deg, #0066ff, #000066); }
+  .fivem::before { background: linear-gradient(90deg, #ff6600, #330000); }
+  .arena::before { background: linear-gradient(90deg, #ff00ff, #330033); }
+  .wz::before { background: linear-gradient(90deg, #cccccc, #333333); }
+  .finals::before { background: linear-gradient(90deg, #00ffff, #003333); }
+  .delta::before { background: linear-gradient(90deg, #ffff00, #333300); }
+  .dota::before { background: linear-gradient(90deg, #ff0000, #330000); }
+  .other::before { background: linear-gradient(90deg, #ffffff, #444); }
+
   .game-btn.selected {
-    border-color: #39ff14;
-    background: rgba(0, 255, 0, 0.25);
+    border: 2px solid #39ff14;
     box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
   }
 
@@ -213,20 +269,32 @@
     transform: scale(1.05);
   }
 
+  /* 🎨 Selected output styles */
   .selected-output {
     margin-top: 15px;
     font-size: 1rem;
     color: #0f0;
-    text-align: left;
-    white-space: pre-line;
+    text-align: center;
   }
+
+  .selected-output .cs2 { font-family: 'Orbitron', sans-serif; color: #39ff14; }
+  .selected-output .r6 { font-family: 'Russo One', sans-serif; color: #ffcc00; }
+  .selected-output .rust { font-family: 'Bebas Neue', sans-serif; color: #ff3300; }
+  .selected-output .bf5 { font-family: 'Orbitron', sans-serif; color: #0099ff; }
+  .selected-output .fivem { font-family: 'Press Start 2P', cursive; color: #ff6600; }
+  .selected-output .arena { font-family: 'Russo One', sans-serif; color: #ff00ff; }
+  .selected-output .wz { font-family: 'Orbitron', sans-serif; color: #ccc; }
+  .selected-output .finals { font-family: 'Russo One', sans-serif; color: #00ffff; }
+  .selected-output .delta { font-family: 'Bebas Neue', sans-serif; color: #ffff00; }
+  .selected-output .sots { font-family: 'Russo One', sans-serif; color: #0099cc; }
+  .selected-output .dota { font-family: 'Russo One', sans-serif; color: #ff0000; }
+  .selected-output .other { font-family: 'Share Tech Mono', monospace; color: #fff; }
 </style>
 
 <script>
   const gameButtons = document.querySelectorAll('.game-btn');
   const okButton = document.querySelector('.ok-btn');
   const output = document.querySelector('.selected-output');
-
   let selectedGames = [];
 
   gameButtons.forEach(btn => {
@@ -243,16 +311,21 @@
 
   okButton.addEventListener('click', () => {
     if (selectedGames.length > 0) {
-      output.innerHTML = "<strong>🎮 Selected Games:</strong><br>" + selectedGames.join("<br>");
+      output.innerHTML = "<strong>🎮 Selected Games:</strong><br>" +
+        selectedGames.map(g => {
+          let cls = "";
+          gameButtons.forEach(b => {
+            if (b.textContent === g) {
+              cls = b.classList[1];
+            }
+          });
+          return `<span class="${cls}">${g}</span>`;
+        }).join("<br>");
     } else {
       output.innerHTML = "<strong>No games selected.</strong>";
     }
   });
 </script>
-
-
-
-
 
 
 
