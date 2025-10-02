@@ -116,10 +116,6 @@
   
 
 
-
-
-
-
 <!-- 🎮 Gaming Selection Section -->
 <div class="game-section">
   <h2>Select Your Game</h2>
@@ -196,21 +192,25 @@
     background: linear-gradient(45deg, #39ff14, #0f0);
   }
 
+  /* 🎮 Buttons */
   .game-btn {
-    padding: 10px;
+    padding: 14px 12px;
     border: 2px solid #0f0;
-    border-radius: 6px;
+    border-radius: 8px;
     background: black;
     color: #0f0;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: 0.3s;
+    font-size: 1.05rem; /* بزرگ و واضح */
+    font-weight: bold;
+    transition: all 0.4s ease; /* هاور نرم */
     position: relative;
     overflow: hidden;
   }
 
   .game-btn:hover {
-    transform: scale(1.05);
+    background: rgba(0, 255, 0, 0.15);
+    box-shadow: 0 0 12px #0f0;
+    transform: scale(1.03);
   }
 
   /* ✨ Animated gradient borders */
@@ -218,7 +218,7 @@
     content: "";
     position: absolute;
     top: -2px; left: -2px; right: -2px; bottom: -2px;
-    border-radius: 6px;
+    border-radius: 8px;
     background: linear-gradient(90deg, #0f0, #00f);
     z-index: -1;
     background-size: 200% 200%;
@@ -231,7 +231,7 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* 🎮 Different color combos */
+  /* 🎨 Different color combos for each game */
   .sots::before { background: linear-gradient(90deg, #003300, #001a33); } /* Sea of Thieves */
   .cs2::before { background: linear-gradient(90deg, #39ff14, #111); }
   .r6::before { background: linear-gradient(90deg, #ffcc00, #333); }
@@ -250,9 +250,10 @@
     box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
   }
 
+  /* OK button */
   .ok-btn {
     margin-top: 15px;
-    padding: 12px;
+    padding: 14px;
     width: 100%;
     background: #0f0;
     border: none;
@@ -269,7 +270,7 @@
     transform: scale(1.05);
   }
 
-  /* 🎨 Selected output styles */
+  /* Selected output */
   .selected-output {
     margin-top: 15px;
     font-size: 1rem;
@@ -326,6 +327,9 @@
     }
   });
 </script>
+
+
+
 
 
 
